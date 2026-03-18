@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../Core/Core.csproj" />
+  <Project Path="../IntegrationTests/IntegrationTests.csproj" Id="9744f104-5e0f-43d2-8a15-f76a0cddcd95" />
+  <Project Path="../UnitTests/UnitTests.csproj" Id="9e8279bb-62fb-4ae2-a825-b85927433b25" />
+  <Project Path="../WinForms/WinForms.csproj" />
+</Solution>

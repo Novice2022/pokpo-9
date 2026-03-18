@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\MyApp\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D5731C0E-5492-25B1-FA4D-E8F72BDD01C6}|..\\Core\\Core.csproj|c:\\univer\\8-term\\\u043F\u043E\u043A\u043F\u043E\\projects\\lab9\\core\\services\\authenticationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9744F104-5E0F-43D2-8A15-F76A0CDDCD95}|..\\IntegrationTests\\IntegrationTests.csproj|c:\\univer\\8-term\\\u043F\u043E\u043A\u043F\u043E\\projects\\lab9\\integrationtests\\authenticationserviceintegrationtests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E8279BB-62FB-4AE2-A825-B85927433B25}|..\\UnitTests\\UnitTests.csproj|c:\\univer\\8-term\\\u043F\u043E\u043A\u043F\u043E\\projects\\lab9\\unittests\\authenticationservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9744F104-5E0F-43D2-8A15-F76A0CDDCD95}|..\\IntegrationTests\\IntegrationTests.csproj|c:\\univer\\8-term\\\u043F\u043E\u043A\u043F\u043E\\projects\\lab9\\integrationtests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E8279BB-62FB-4AE2-A825-B85927433B25}|..\\UnitTests\\UnitTests.csproj|c:\\univer\\8-term\\\u043F\u043E\u043A\u043F\u043E\\projects\\lab9\\unittests\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AuthenticationService.cs",
+              "DocumentMoniker": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\Core\\Services\\AuthenticationService.cs",
+              "RelativeDocumentMoniker": "..\\Core\\Services\\AuthenticationService.cs",
+              "ToolTip": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\Core\\Services\\AuthenticationService.cs",
+              "RelativeToolTip": "..\\Core\\Services\\AuthenticationService.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T15:29:44.711Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AuthenticationServiceIntegrationTests.cs",
+              "DocumentMoniker": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\IntegrationTests\\AuthenticationServiceIntegrationTests.cs",
+              "RelativeDocumentMoniker": "..\\IntegrationTests\\AuthenticationServiceIntegrationTests.cs",
+              "ToolTip": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\IntegrationTests\\AuthenticationServiceIntegrationTests.cs",
+              "RelativeToolTip": "..\\IntegrationTests\\AuthenticationServiceIntegrationTests.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwAsAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T15:24:07.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AuthenticationServiceTests.cs",
+              "DocumentMoniker": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\UnitTests\\AuthenticationServiceTests.cs",
+              "RelativeDocumentMoniker": "..\\UnitTests\\AuthenticationServiceTests.cs",
+              "ToolTip": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\UnitTests\\AuthenticationServiceTests.cs",
+              "RelativeToolTip": "..\\UnitTests\\AuthenticationServiceTests.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T15:20:29.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\IntegrationTests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\IntegrationTests\\UnitTest1.cs",
+              "ToolTip": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\IntegrationTests\\UnitTest1.cs",
+              "RelativeToolTip": "..\\IntegrationTests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T15:15:28.913Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UnitTest1.cs",
+              "DocumentMoniker": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\UnitTests\\UnitTest1.cs",
+              "RelativeDocumentMoniker": "..\\UnitTests\\UnitTest1.cs",
+              "ToolTip": "C:\\univer\\8-term\\\u041F\u041E\u041A\u041F\u041E\\projects\\lab9\\UnitTests\\UnitTest1.cs",
+              "RelativeToolTip": "..\\UnitTests\\UnitTest1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T15:14:46.895Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
