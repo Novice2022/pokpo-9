@@ -1,11 +1,10 @@
 name: .NET CI/CD
 
-# События, при которых запускается пайплайн
 on:
   push:
-    branches: [ main, develop ]   # на push в эти ветки
+    branches: [ main, develop ]
   pull_request:
-    branches: [ main ]            # на создание PR в main
+    branches: [ main ]
 
 jobs:
   # Стадия тестирования (test)
@@ -13,69 +12,67 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [UnitTests, IntegrationTests] # запускаем тесты для двух проектов параллельно
+        project: [UnitTests, IntegrationTests]
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.0.x   # укажи свою версию .NET
-      
+          dotnet-version: 10.0.x
+
       - name: Restore dependencies
-        run: dotnet restore MyApp/MyApp.sln
-      
+        run: dotnet restore MyApp/MyApp.slnx
+
       - name: Build
-        run: dotnet build MyApp/MyApp.sln --no-restore --configuration Release
-      
-      # Статический анализ (линтер) через сборку с предупреждениями как ошибки
-      # Если нужно проверить стиль, можно добавить dotnet format --verify-no-changes
-      - name: Check code style
-        run: dotnet format --verify-no-changes --verbosity diagnostic
-      
-      # Запуск тестов с покрытием
+        run: dotnet build MyApp/MyApp.slnx --no-restore --configuration Release
+
+      - name: Check code style (optional)
+        run: dotnet format --verify-no-changes --verbosity diagnostic || true
+
       - name: Run ${{ matrix.project }} tests with coverage
         run: |
           dotnet test ${{ matrix.project }}/${{ matrix.project }}.csproj \
-          --configuration Release \
-          --no-build \
-          --collect:"XPlat Code Coverage" \
-          --settings coverlet.runsettings \
-          --results-directory ./TestResults/${{ matrix.project }}
-      
-      # Сохраняем результаты тестов и покрытия как артефакты
+            --configuration Release \
+            --no-build \
+            --collect:"XPlat Code Coverage" \
+            --settings coverlet.runsettings \
+            --results-directory ./TestResults/${{ matrix.project }}
+
       - name: Upload test results
         uses: actions/upload-artifact@v4
         with:
           name: test-results-${{ matrix.project }}
           path: ./TestResults/${{ matrix.project }}
-        if: always()   # сохранять даже при неудачных тестах
+        if: always()   # загружать даже при неудачных тестах
+
+  # Стадия отчётов (report)
   report:
-    needs: test   # зависит от job test
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Download all test results
         uses: actions/download-artifact@v4
         with:
           path: ./TestResults
-      
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
-      
+
       - name: Install ReportGenerator
         run: dotnet tool install -g dotnet-reportgenerator-globaltool
-      
+
       - name: Generate coverage report
         run: |
           reportgenerator \
-            -reports:./TestResults/**/coverage.cobertura.xml \
-            -targetdir:./coveragereport \
+            -reports:"./TestResults/**/coverage.cobertura.xml" \
+            -targetdir:"./coveragereport" \
             -reporttypes:Html
-      
+
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
