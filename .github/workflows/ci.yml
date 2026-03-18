@@ -35,7 +35,7 @@ jobs:
             --configuration Release `
             --no-build `
             --collect:"XPlat Code Coverage" `
-            --settings coverlet.runsettings `
+            --settings MyApp/coverlet.runsettings `
             --results-directory ./TestResults/${{ matrix.project }}
 
       - name: Upload test results
