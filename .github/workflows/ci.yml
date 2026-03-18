@@ -1,0 +1,83 @@
+name: .NET CI/CD
+
+# События, при которых запускается пайплайн
+on:
+  push:
+    branches: [ main, develop ]   # на push в эти ветки
+  pull_request:
+    branches: [ main ]            # на создание PR в main
+
+jobs:
+  # Стадия тестирования (test)
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [UnitTests, IntegrationTests] # запускаем тесты для двух проектов параллельно
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x   # укажи свою версию .NET
+      
+      - name: Restore dependencies
+        run: dotnet restore
+      
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+      
+      # Статический анализ (линтер) через сборку с предупреждениями как ошибки
+      # Если нужно проверить стиль, можно добавить dotnet format --verify-no-changes
+      - name: Check code style
+        run: dotnet format --verify-no-changes --verbosity diagnostic
+      
+      # Запуск тестов с покрытием
+      - name: Run ${{ matrix.project }} tests with coverage
+        run: |
+          dotnet test MyApp.${{ matrix.project }}/MyApp.${{ matrix.project }}.csproj \
+            --configuration Release \
+            --no-build \
+            --collect:"XPlat Code Coverage" \
+            --settings coverlet.runsettings \
+            --results-directory ./TestResults/${{ matrix.project }}
+      
+      # Сохраняем результаты тестов и покрытия как артефакты
+      - name: Upload test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-${{ matrix.project }}
+          path: ./TestResults/${{ matrix.project }}
+        if: always()   # сохранять даже при неудачных тестах
+  report:
+    needs: test   # зависит от job test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Download all test results
+        uses: actions/download-artifact@v4
+        with:
+          path: ./TestResults
+      
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      
+      - name: Install ReportGenerator
+        run: dotnet tool install -g dotnet-reportgenerator-globaltool
+      
+      - name: Generate coverage report
+        run: |
+          reportgenerator \
+            -reports:./TestResults/**/coverage.cobertura.xml \
+            -targetdir:./coveragereport \
+            -reporttypes:Html
+      
+      - name: Upload coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: ./coveragereport

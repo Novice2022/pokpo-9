@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RunSettings>
+  <DataCollectionRunSettings>
+    <DataCollectors>
+      <DataCollector friendlyName="XPlat code coverage">
+        <Configuration>
+          <Format>cobertura</Format>   <!-- формат для отчётов -->
+          <Exclude>[*.Tests]*</Exclude> <!-- исключаем тестовые проекты -->
+          <IncludeTestAssembly>false</IncludeTestAssembly>
+          <!-- Порог общего покрытия строк -->
+          <Threshold>70</Threshold>
+          <ThresholdType>Line</ThresholdType>
+        </Configuration>
+      </DataCollector>
+    </DataCollectors>
+  </DataCollectionRunSettings>
+</RunSettings>

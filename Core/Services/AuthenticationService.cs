@@ -1,5 +1,5 @@
-﻿using MyApp.Core.Models;
-using System.Text.Json;
+﻿using System.Text.Json;
+using MyApp.Core.Models;
 
 namespace MyApp.Core.Services;
 
@@ -37,6 +37,7 @@ public class AuthenticationService
                 _users = new List<User>();
                 return;
             }
+
             try
             {
                 _users = JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
