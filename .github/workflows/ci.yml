@@ -7,9 +7,8 @@ on:
     branches: [ main ]
 
 jobs:
-  # Стадия тестирования (test)
   test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       matrix:
         project: [UnitTests, IntegrationTests]
@@ -19,7 +18,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 10.0.x
+          dotnet-version: 8.0.x
 
       - name: Restore dependencies
         run: dotnet restore MyApp/MyApp.slnx
@@ -32,11 +31,11 @@ jobs:
 
       - name: Run ${{ matrix.project }} tests with coverage
         run: |
-          dotnet test ${{ matrix.project }}/${{ matrix.project }}.csproj \
-            --configuration Release \
-            --no-build \
-            --collect:"XPlat Code Coverage" \
-            --settings coverlet.runsettings \
+          dotnet test ${{ matrix.project }}/${{ matrix.project }}.csproj `
+            --configuration Release `
+            --no-build `
+            --collect:"XPlat Code Coverage" `
+            --settings coverlet.runsettings `
             --results-directory ./TestResults/${{ matrix.project }}
 
       - name: Upload test results
@@ -44,12 +43,11 @@ jobs:
         with:
           name: test-results-${{ matrix.project }}
           path: ./TestResults/${{ matrix.project }}
-        if: always()   # загружать даже при неудачных тестах
+        if: always()
 
-  # Стадия отчётов (report)
   report:
     needs: test
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
 
@@ -68,9 +66,9 @@ jobs:
 
       - name: Generate coverage report
         run: |
-          reportgenerator \
-            -reports:"./TestResults/**/coverage.cobertura.xml" \
-            -targetdir:"./coveragereport" \
+          reportgenerator `
+            -reports:"./TestResults/**/coverage.cobertura.xml" `
+            -targetdir:"./coveragereport" `
             -reporttypes:Html
 
       - name: Upload coverage report
